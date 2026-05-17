@@ -90,7 +90,7 @@ class AkuvoxApiClient:
 
         # Begin polling personal door log
         # Disabled for now: current API call is failing and spamming logs
-        # await self.async_start_polling()
+        await self.async_start_polling()
 
         return True
 
@@ -312,12 +312,6 @@ class AkuvoxApiClient:
         LOGGER.debug("📡 Retrieving list of user's devices...")
         url = f"https://{self._data.host}/{API_USERCONF}?token={self._data.token}"
 
-        LOGGER.error(
-            "AKUVOX DEBUG userconf host=%s url=%s",
-            self._data.host,
-            url
-        )
-
         data = {}
         headers = {
             "Host": self._data.host,
@@ -338,6 +332,39 @@ class AkuvoxApiClient:
         LOGGER.error("❌ Unable to retrieve user's device list.")
         return None
 
+    def make_opendoor_request(self, name: str, host: str, token: str, data: str):
+        """Request the user's configuration data."""
+        LOGGER.debug("📡 Sending request to open door '%s'...", name)
+
+        url = f"https://{host}/{API_OPENDOOR}?token={token}"
+
+        headers = {
+            "Host": host,
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-AUTH-TOKEN": token,
+            "api-version": OPENDOOR_API_VERSION,
+            "Accept-Encoding": "gzip, deflate, br",
+            "Connection": "keep-alive",
+            "Accept": "*/*",
+            "User-Agent": "VBell/6.61.2 (iPhone; iOS 16.6; Scale/3.00)",
+            "Accept-Language": "en-AU;q=1, he-AU;q=0.9, ru-RU;q=0.8",
+            "x-cloud-lang": "en"
+        }
+
+        response = self.post_request(
+            url=url,
+            headers=headers,
+            data=data
+        )
+
+        json_data = self.process_response(response, url)
+
+        if json_data is not None:
+            LOGGER.debug("✅ Door open request sent successfully.")
+            return json_data
+
+        LOGGER.error("❌ Request to open door failed.")
+        return None
     async def async_retrieve_temp_keys_data(self) -> bool:
         """Request and parse the user's temporary keys."""
         json_data = await self.async_get_temp_key_list()
@@ -392,7 +419,7 @@ class AkuvoxApiClient:
                     LOGGER.debug("🚪 New door open event occurred. Firing akuvox_door_update event")
                     event_name = "akuvox_door_update"
                     self.hass.bus.async_fire(event_name, new_door_log)
-            await asyncio.sleep(2)  # Wait for 2 seconds before calling again
+            await asyncio.sleep(60)  # Wait for 2 seconds before calling again
 
     async def async_get_personal_door_log(self):
         """Request the user's personal door log data."""
@@ -431,7 +458,7 @@ class AkuvoxApiClient:
         if json_data is not None and len(json_data) > 0:
             return json_data
 
-        LOGGER.error("❌ Unable to retrieve user's personal door log")
+        LOGGER.debug("❌ Unable to retrieve user's personal door log")
         return None
 
     ###################
