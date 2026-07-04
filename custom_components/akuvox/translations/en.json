@@ -5,8 +5,23 @@
                 "title": "Akuvox SmartPlus Sign-In",
                 "description": "Choose a sign-in method to connect to your Akuvox SmartPlus account:",
                 "menu_options": {
-                    "sms_sign_in_warning": "1. SMS Verification (Recommended)",
-                    "app_tokens_sign_in": "2. App Tokens (Advanced)"
+                    "email_password_sign_in": "1. Email & Password (Recommended)",
+                    "sms_sign_in_warning": "2. SMS Verification",
+                    "app_tokens_sign_in": "3. App Tokens (Advanced)"
+                }
+            },
+            "email_password_sign_in": {
+                "title": "Sign In with Email & Password",
+                "description": "Enter your Akuvox SmartPlus account credentials.",
+                "data": {
+                    "email": "Email Address",
+                    "password": "Password",
+                    "country_code": "Country",
+                    "subdomain": "Manually set the regional API subdomain"
+                },
+                "errors": {
+                    "invalid_auth": "Login failed. Check your email and password and try again.",
+                    "missing_credentials": "Please enter both your email address and password."
                 }
             },
             "sms_sign_in_warning": {

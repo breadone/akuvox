@@ -1,4 +1,5 @@
 """Constants for akuvox."""
+
 from logging import Logger, getLogger
 
 LOGGER: Logger = getLogger(__package__)
@@ -37,357 +38,356 @@ LOCATIONS_DICT = {
         "country": "Argentina",
         "phone_number": "54",
         "flag": "🇦🇷",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "AU": {
         "country": "Australia",
         "phone_number": "61",
         "flag": "🇦🇺",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "AZ": {
         "country": "Azerbaijan",
         "phone_number": "994",
         "flag": "🇦🇿",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "BH": {
         "country": "Bahrain",
         "phone_number": "973",
         "flag": "🇧🇭",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "BY": {
         "country": "Belarus",
         "phone_number": "375",
         "flag": "🇧🇾",
-        "subdomain": "rucloud"
+        "subdomain": "rucloud",
     },
-
     "BE": {
         "country": "Belgium",
         "phone_number": "32",
         "flag": "🇧🇪",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "BN": {
         "country": "Brunei",
         "phone_number": "673",
         "flag": "🇧🇳",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "BR": {
         "country": "Brazil",
         "phone_number": "55",
         "flag": "🇧🇷",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "CA": {
         "country": "Canada",
         "phone_number": "1",
         "flag": "🇨🇦",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "CH": {
         "country": "Chile",
         "phone_number": "56",
         "flag": "🇨🇱",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "CN": {
         "country": "China",
         "phone_number": "86",
         "flag": "🇨🇳",
-        "subdomain": "ccloud"
+        "subdomain": "ccloud",
     },
     "CO": {
         "country": "Colombia",
         "phone_number": "57",
         "flag": "🇨🇴",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "CZ": {
         "country": "Czech Republic",
         "phone_number": "420",
         "flag": "🇨🇿",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "DE": {
         "country": "Germany",
         "phone_number": "49",
         "flag": "🇩🇪",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "EE": {
         "country": "Estonia",
         "phone_number": "372",
         "flag": "🇪🇪",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "EC": {
         "country": "Ecuador",
         "phone_number": "593",
         "flag": "🇪🇨",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "FJ": {
         "country": "Fiji",
         "phone_number": "679",
         "flag": "🇫🇯",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "GB": {
         "country": "United Kingdom",
         "phone_number": "44",
         "flag": "🇬🇧",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "GE": {
         "country": "Georgia",
         "phone_number": "995",
         "flag": "🇬🇪",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "HK": {
         "country": "Hong Kong",
         "phone_number": "852",
         "flag": "🇭🇰",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "ID": {
         "country": "Indonesia",
         "phone_number": "62",
         "flag": "🇮🇩",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "IL": {
         "country": "Israel",
         "phone_number": "972",
         "flag": "🇮🇱",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "IR": {
         "country": "Iran",
         "phone_number": "98",
         "flag": "🇮🇷",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "IT": {
         "country": "Italy",
         "phone_number": "39",
         "flag": "🇮🇹",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "JO": {
         "country": "Jordan",
         "phone_number": "962",
         "flag": "🇯🇴",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "JP": {
         "country": "Japan",
         "phone_number": "81",
         "flag": "🇯🇵",
-        "subdomain": "jcloud"
+        "subdomain": "jcloud",
     },
     "KR": {
         "country": "South Korea",
         "phone_number": "82",
         "flag": "🇰🇷",
-        "subdomain": "jcloud"
+        "subdomain": "jcloud",
     },
     "KW": {
         "country": "Kuwait",
         "phone_number": "965",
         "flag": "🇰🇼",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "KZ": {
         "country": "Kazakhstan",
         "phone_number": "7",
         "flag": "🇰🇿",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "LB": {
         "country": "Lebanon",
         "phone_number": "961",
         "flag": "🇱🇧",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "LV": {
         "country": "Latvia",
         "phone_number": "371",
         "flag": "🇱🇻",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "MO": {
         "country": "Macao",
         "phone_number": "853",
         "flag": "🇲🇴",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "MN": {
         "country": "Mongolia",
         "phone_number": "976",
         "flag": "🇲🇳",
-        "subdomain": "jcloud"
+        "subdomain": "jcloud",
     },
     "MV": {
         "country": "Maldives",
         "phone_number": "960",
         "flag": "🇲🇻",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "MX": {
         "country": "Mexico",
         "phone_number": "52",
         "flag": "🇲🇽",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "MY": {
         "country": "Malaysia",
         "phone_number": "60",
         "flag": "🇲🇾",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "NL": {
         "country": "Netherlands",
         "phone_number": "31",
         "flag": "🇳🇱",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "NO": {
         "country": "Norway",
         "phone_number": "47",
         "flag": "🇳🇴",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "NZ": {
         "country": "New Zealand",
         "phone_number": "64",
         "flag": "🇳🇿",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "OM": {
         "country": "Oman",
         "phone_number": "968",
         "flag": "🇴🇲",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "PE": {
         "country": "Peru",
         "phone_number": "51",
         "flag": "🇵🇪",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "PH": {
         "country": "Philippines",
         "phone_number": "63",
         "flag": "🇵🇭",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "PK": {
         "country": "Pakistan",
         "phone_number": "92",
         "flag": "🇵🇰",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "PL": {
         "country": "Poland",
         "phone_number": "48",
         "flag": "🇵🇱",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "PT": {
         "country": "Portugal",
         "phone_number": "351",
         "flag": "🇵🇹",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "PY": {
         "country": "Paraguay",
         "phone_number": "595",
         "flag": "🇵🇾",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "RO": {
         "country": "Romania",
         "phone_number": "40",
         "flag": "🇷🇴",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "RU": {
         "country": "Russia",
         "phone_number": "7",
         "flag": "🇷🇺",
-        "subdomain": "rucloud"
+        "subdomain": "rucloud",
     },
     "SA": {
         "country": "Saudi Arabia",
         "phone_number": "966",
         "flag": "🇸🇦",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "SG": {
         "country": "Singapore",
         "phone_number": "65",
         "flag": "🇸🇬",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "SE": {
         "country": "Sweden",
         "phone_number": "46",
         "flag": "🇸🇪",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "TH": {
         "country": "Thailand",
         "phone_number": "66",
         "flag": "🇹🇭",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "TN": {
         "country": "Tunisia",
         "phone_number": "216",
         "flag": "🇹🇳",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "TR": {
         "country": "Turkey",
         "phone_number": "90",
         "flag": "🇹🇷",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "TW": {
         "country": "Taiwan",
         "phone_number": "886",
         "flag": "🇹🇼",
-        "subdomain": "scloud"
+        "subdomain": "scloud",
     },
     "UA": {
         "country": "Ukraine",
         "phone_number": "380",
         "flag": "🇺🇦",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "AE": {
         "country": "United Arab Emirates",
         "phone_number": "971",
         "flag": "🇦🇪",
-        "subdomain": "ecloud"
+        "subdomain": "ecloud",
     },
     "US": {
         "country": "United States",
         "phone_number": "1",
         "flag": "🇺🇸",
-        "subdomain": "ucloud"
+        "subdomain": "ucloud",
     },
     "VN": {
         "country": "Vietnam",
         "phone_number": "84",
         "flag": "🇻🇳",
-        "subdomain": "scloud"
-    }
+        "subdomain": "scloud",
+    },
 }
 
 COUNTRY_PHONE: dict = {
@@ -448,15 +448,15 @@ COUNTRY_PHONE: dict = {
     "TH": "66",
     "CN": "86",
     "AE": "971",
-    "RU": "7"
+    "RU": "7",
 }
-
 
 
 SMS_LOGIN_API_VERSION = "6.6"
 REST_SERVER_API_VERSION = "6.0"
 OPENDOOR_API_VERSION = "4.3"
 USERCONF_API_VERSION = "6.5"
+LOGIN_API_VERSION = "7.33"
 REST_SERVER_ADDR = "gate.subdomain.akuvox.com"
 REST_SERVER_PORT = 8600
 
@@ -464,6 +464,7 @@ API_REST_SERVER_DATA = "rest_server"
 API_SEND_SMS = "send_mobile_checkcode"
 API_SERVERS_LIST = "servers_list"
 API_SMS_LOGIN = "sms_login"
+API_LOGIN = "login"
 API_USERCONF = "userconf"
 API_OPENDOOR = "opendoor"
 
