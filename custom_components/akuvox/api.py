@@ -6,7 +6,7 @@ import asyncio
 import hashlib
 import socket
 import json
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote
 
 from homeassistant.core import HomeAssistant
 
@@ -182,7 +182,8 @@ class AkuvoxApiClient:
                 "user": self._caesar_shift(email),
                 "passwd": self._double_md5(password),
                 "id_code": "",
-            }
+            },
+            quote_via=lambda s, safe, encoding, errors: quote(s, safe="@"),
         )
         url = f"https://{gate_host}/{API_LOGIN}?{params}"
         headers = {
