@@ -230,6 +230,66 @@ class AkuvoxApiClient:
         await self.async_retrieve_temp_keys_data()
         return True
 
+    async def async_refresh_login_token(self) -> bool:
+        """Refresh the v7 login token using the stored refresh_token."""
+        if not self._data.refresh_token:
+            LOGGER.error("❌ No refresh_token stored; cannot refresh.")
+            return False
+
+        gate_host = f"{REST_SERVER_ADDR}:{REST_SERVER_PORT}".replace(
+            "subdomain", self._data.subdomain
+        )
+        url = f"https://{gate_host}/refresh_token"
+        headers = {
+            "Accept": "*/*",
+            "content-type": "application/json",
+            "x-auth-token": self._data.token,
+            "api-version": "6.8",
+            "User-Agent": "VBell/7.41.4 (iPhone; iOS 27.0; Scale/3.00)",
+            "Accept-Language": "en-NZ;q=1, ja-NZ;q=0.9",
+        }
+        data = json.dumps({"refresh_token": self._data.refresh_token})
+
+        LOGGER.debug("📡 Refreshing login token...")
+        try:
+            response = await self.hass.async_add_executor_job(
+                self.post_request, url, headers, data, 10
+            )
+        except Exception as error:  # pylint: disable=broad-except
+            LOGGER.error("❌ Token refresh request failed: %s", error)
+            return False
+
+        if response is None or response.status_code != 200:
+            LOGGER.error(
+                "❌ Token refresh failed: HTTP %s",
+                response.status_code if response else "no response",
+            )
+            return False
+
+        try:
+            body = response.json()
+        except Exception as error:  # pylint: disable=broad-except
+            LOGGER.error("❌ Could not parse refresh response: %s", error)
+            return False
+
+        if body.get("err_code") != "0":
+            LOGGER.error(
+                "❌ Token refresh failed: %s (err_code=%s)",
+                body.get("message"),
+                body.get("err_code"),
+            )
+            return False
+
+        LOGGER.debug("✅ Token refreshed successfully")
+        self._data.parse_login_response(body.get("datas", {}))
+        return True
+
+    async def async_retrieve_user_data_v7(self) -> bool:
+        """Retrieve device data for v7 email/password accounts (no servers_list needed)."""
+        await self.async_retrieve_device_data()
+        await self.async_retrieve_temp_keys_data()
+        return True
+
     async def async_fetch_rest_server(self):
         """Retrieve the Akuvox REST server addresses and data."""
         LOGGER.debug("📡 Fetching REST server data...")
