@@ -64,6 +64,9 @@ class AkuvoxData:
         self.token = (
             token if token else self.get_value_for_key(entry, "token", self.token)
         )  # type: ignore
+        self.refresh_token = self.get_value_for_key(
+            entry, "refresh_token", self.refresh_token
+        )  # type: ignore
         self.phone_number = (
             phone_number
             if phone_number
