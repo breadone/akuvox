@@ -67,6 +67,7 @@ class AkuvoxApiClient:
         """Akuvox API Client."""
         self._session = session
         self.hass = hass
+        self._entry = entry
         if entry:
             LOGGER.debug("▶️ Initializing AkuvoxData from API client init")
             self._data = AkuvoxData(entry=entry, hass=hass)  # type: ignore
@@ -283,6 +284,11 @@ class AkuvoxApiClient:
 
         LOGGER.debug("✅ Token refreshed successfully")
         self._data.parse_login_response(body.get("datas", {}))
+        if self._entry is not None:
+            new_data = dict(self._entry.data)
+            new_data["token"] = self._data.token
+            new_data["refresh_token"] = self._data.refresh_token
+            self.hass.config_entries.async_update_entry(self._entry, data=new_data)
         return True
 
     async def async_retrieve_user_data_v7(self) -> bool:

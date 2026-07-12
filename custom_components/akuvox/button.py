@@ -1,18 +1,14 @@
 """Button platform for akuvox."""
+
 from homeassistant.components.button import ButtonEntity
 from homeassistant.helpers import storage
 from homeassistant.helpers.entity import DeviceInfo
 
 from .api import AkuvoxApiClient
 from .coordinator import AkuvoxDataUpdateCoordinator
-from .const import (
-    DOMAIN,
-    LOGGER,
-    NAME,
-    VERSION,
-    DATA_STORAGE_KEY
-)
+from .const import DOMAIN, LOGGER, NAME, VERSION, DATA_STORAGE_KEY
 from .entity import AkuvoxEntity
+
 
 async def async_setup_entry(hass, entry, async_add_devices):
     """Set up the door relay platform."""
@@ -22,7 +18,7 @@ async def async_setup_entry(hass, entry, async_add_devices):
     client = coordinator.client
 
     store = storage.Store(hass, 1, DATA_STORAGE_KEY)
-    device_data: dict = await store.async_load() # type: ignore
+    device_data: dict = await store.async_load()  # type: ignore
     door_relay_data = device_data["door_relay_data"]
 
     entities = []
@@ -64,11 +60,7 @@ class AkuvoxDoorRelayEntity(ButtonEntity, AkuvoxEntity):
     ) -> None:
         """Initialize the Akuvox door relay class."""
         super(ButtonEntity, self).__init__(client=client, entry=entry)
-        AkuvoxEntity.__init__(
-            self=self,
-            client=client,
-            entry=entry
-        )
+        AkuvoxEntity.__init__(self=self, client=client, entry=entry)
         unique_name = name + ", " + relay_id
         self._client = client
         self._name = unique_name
@@ -87,12 +79,15 @@ class AkuvoxDoorRelayEntity(ButtonEntity, AkuvoxEntity):
             manufacturer=NAME,
         )
 
-    def press(self) -> None:
+    async def async_press(self) -> None:
         """Trigger the door relay."""
-        self._client.make_opendoor_request(
-            name=self._name,
-            host=self._host,
-            token=self._token,
-            data=self._data
+        await self._client.async_refresh_login_token()
+        host = self._client._data.host
+        token = self._client._data.token
+        await self.hass.async_add_executor_job(
+            self._client.make_opendoor_request,
+            self._name,
+            host,
+            token,
+            self._data,
         )
-

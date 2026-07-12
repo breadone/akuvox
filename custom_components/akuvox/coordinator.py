@@ -54,13 +54,6 @@ class AkuvoxDataUpdateCoordinator(DataUpdateCoordinator):
                     )
                     refreshed = await self.client.async_refresh_login_token()
                     if refreshed:
-                        # Persist new token + refresh_token back into the config entry.
-                        new_data = dict(self.config_entry.data)
-                        new_data["token"] = self.client._data.token
-                        new_data["refresh_token"] = self.client._data.refresh_token
-                        self.hass.config_entries.async_update_entry(
-                            self.config_entry, data=new_data
-                        )
                         success = await self.client.async_retrieve_user_data_v7()
 
                     if not success:
