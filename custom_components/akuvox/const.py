@@ -266,7 +266,7 @@ LOCATIONS_DICT = {
         "country": "New Zealand",
         "phone_number": "64",
         "flag": "🇳🇿",
-        "subdomain": "scloud",
+        "subdomain": "aucloud",
     },
     "OM": {
         "country": "Oman",
